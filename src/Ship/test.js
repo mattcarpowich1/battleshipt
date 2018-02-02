@@ -43,7 +43,6 @@ function testShipSize (size, shouldPass) {
     }
     return
   }
-
 }
 
 function testShipOrientation (o, shouldPass) {
