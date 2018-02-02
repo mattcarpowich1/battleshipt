@@ -25,7 +25,6 @@ console.log(HR, '\nTESTING VALID SHIP ORIENTATIONS')
 testShipOrientation('HORIZONTAL', true)
 testShipOrientation('VERTICAL', true)
 
-//  
 /* ----------------------------------------------- */
 // TESTING FUNCTIONS
 
