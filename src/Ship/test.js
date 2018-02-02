@@ -33,13 +33,13 @@ function testShipSize (size, shouldPass) {
   try {
     const ship = new Ship(size)
     if (shouldPass) {
-      console.log('PASSED: ', ship.getSize())
+      console.log(`PASSED WITH SIZE ${ship.getSize()}`)
     }
   } catch (err) {
     if (!shouldPass) {
-      console.log('PASSED')
+      console.log(`PASSED WITH SIZE ${size}`)
     } else {
-      console.log('FAILED: ', err)
+      console.log(`FAILED: ${err}`)
     }
     return
   }
@@ -50,13 +50,13 @@ function testShipOrientation (o, shouldPass) {
     const ship = new Ship(1)
     ship.setOrientation(o)
     if (shouldPass) {
-      console.log('PASSED: ', ship.getOrientation())
+      console.log(`PASSED WITH ORIENTATION ${ship.getOrientation()}`)
     }
   } catch (err) {
     if (!shouldPass) {
-      console.log('PASSED')
+      console.log(`PASSED WITH ORIENTATION "${o}"`)
     } else {
-      console.log('FAILED: ', err)
+      console.log(`FAILED: ${err}`)
     }
     return
   }
