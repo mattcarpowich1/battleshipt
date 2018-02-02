@@ -6,7 +6,8 @@
   "author": "Matt Carpowich",
   "license": "MIT",
   "scripts": {
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "test": "cd src/Ship && npx babel-node test.js && cd ../Board && npx babel-node test.js"
   },
   "dependencies": {
     "babel-core": "^6.26.0",
@@ -15,5 +16,8 @@
     "babel-preset-stage-2": "^6.24.1",
     "path": "^0.12.7",
     "webpack": "^3.10.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
   }
 }

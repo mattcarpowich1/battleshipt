@@ -14,15 +14,15 @@ const config = {
     modules: [__dirname, 'node_modules'],
     extensions: ['*', '.js']
   },
-  // module: {
-  //   loaders: [
-  //     {
-  //       test: /\.jsx?/,
-  //       include: APP_DIR,
-  //       loader: 'babel-loader'
-  //     }
-  //   ]
-  // }
+  module: {
+    loaders: [
+      {
+        test: /\.js?/,
+        include: APP_DIR,
+        loader: 'babel-loader'
+      }
+    ]
+  }
 }
 
 module.exports = config;
