@@ -13,7 +13,31 @@ const BOARD_SIZES = [
   LARGE_BOARD_SIZE
 ]
 
+const SMALL_SHIP_SIZE = 2
+
+const SHIP_SIZES = [
+  SMALL_SHIP_SIZE
+]
+
 testBoardSizes(BOARD_SIZES)
+
+// HORIZONTAL POSITIONS TEST
+console.log(
+  HR, 
+  `\nHORIZONTAL POSITIONS: SHIP_SIZE = ${SMALL_SHIP_SIZE},`,
+  `BOARD_SIZE = ${DEFAULT_BOARD_SIZE}`
+)
+const b1 = new Board(DEFAULT_BOARD_SIZE)
+console.log(b1.getAvailableCoordinates(SMALL_SHIP_SIZE, 'HORIZONTAL'))
+
+// VERTICAL POSITIONS TEST
+console.log(
+  HR, 
+  `\nVERTICAL POSITIONS: SHIP_SIZE = ${SMALL_SHIP_SIZE},`,
+  `BOARD_SIZE = ${DEFAULT_BOARD_SIZE}`
+)
+const b2 = new Board(DEFAULT_BOARD_SIZE)
+console.log(b2.getAvailableCoordinates(SMALL_SHIP_SIZE, 'VERTICAL'))
 
 //  
 /* ----------------------------------------------- */

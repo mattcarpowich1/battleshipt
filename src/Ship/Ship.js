@@ -3,7 +3,7 @@ class Ship {
     if (size < MIN_SIZE || size > MAX_SIZE) {
       throw new Error('Invalid size of ship.')
     }
-    this.size = size
+    this.shipSize = size
     this.position = [null, null]
     this.orientation = ''
     this.isActive = false
@@ -11,7 +11,7 @@ class Ship {
   }
 
   getSize () {
-    return this.size
+    return this.shipSize
   }
 
   getOrientation () {

@@ -15,16 +15,35 @@ class Board {
   // WHERE A PLAYER MAY PLACE THEIR SHIP. 
   getAvailableCoordinates (shipSize, orientation) {
     if (orientation === 'HORIZONTAL') {
-      return coordinates
-      .reduce((acc, row, x) => {
-        for (let y = 0; y < this.boardSize; y++) {
-          if (!row[y] && y < this.boardSize - shipSize) {
-            return [...acc, [x, y]]
+      return (
+        this.coordinates
+        .reduce((acc, row, y) => {
+          let coords = row
+          .map((val, x) => [x, y])
+          .filter(c => (!row[c[0]] && c[0] < this.boardSize - shipSize))
+          if (coords.length > 0) {
+            return [...acc, coords]
           } else {
             return acc
           }
-        }
-      }, [])
+        }, [])
+      ) 
+    } else if (orientation === 'VERTICAL') {
+      return (
+        this.coordinates
+        .reduce((acc, row, y) => {
+          let coords = row
+          .map((val, x) => [x, y])
+          .filter(c => (!row[c[0]] && c[1] < this.boardSize - shipSize))
+          if (coords.length > 0) {
+            return [...acc, coords]
+          } else {
+            return acc
+          }
+        }, [])
+      ) 
+    } else {
+      throw new Error(`INVALID ARGUMENT "${orientation}"`)
     }
   }
 
