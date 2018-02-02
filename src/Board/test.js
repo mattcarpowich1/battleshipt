@@ -39,7 +39,7 @@ console.log(
 const b2 = new Board(DEFAULT_BOARD_SIZE)
 console.log(b2.getAvailableCoordinates(SMALL_SHIP_SIZE, 'VERTICAL'))
 
-//  
+ 
 /* ----------------------------------------------- */
 // TESTING FUNCTIONS
 

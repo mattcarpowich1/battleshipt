@@ -1,7 +1,7 @@
 class Ship {
   constructor (size) {
     if (size < MIN_SIZE || size > MAX_SIZE) {
-      throw new Error('Invalid size of ship.')
+      throw new Error('INVALID SIZE OF SHIP.')
     }
     this.shipSize = size
     this.position = [null, null]
@@ -20,7 +20,7 @@ class Ship {
 
   setOrientation (o) {
     if (!ORIENTATIONS.includes(o)) {
-      throw new Error('Invalid ship orientation.')
+      throw new Error('INVALID SHIP ORIENTATION')
     }
     this.orientation = o
   }
