@@ -17,8 +17,8 @@ function findHorizontalCoords (board) {
               let positions = row
                 .slice(c[0], c[0] + shipSize)
               if (!row[c[0]] && 
-                c[0] < board.boardSize - shipSize &&
-                !positions.includes[true]) {
+                c[0] <= board.boardSize - shipSize &&
+                !positions.includes(true)) {
                 return true
               } else {
                 return false
@@ -41,10 +41,24 @@ function findVerticalCoords (board) {
   return (shipSize, orientation) => {
     return (
       board.coordinates
-        .reduce((acc, row, y) => {
+        .reduce((acc, row, y, arr) => {
           let coords = row
             .map((val, x) => [x, y])
-            .filter(c => (!row[c[0]] && c[1] < board.boardSize - shipSize))
+            .filter(c => {
+              let rows = arr.slice(y, y + shipSize)
+              let positions = rows.map((val, iY) => {
+                return val.filter((v, iX) => {
+                  return (c[0] === iX && c[1] === iY)
+                })
+              })
+              if (!row[c[0]] && 
+                c[1] <= board.boardSize - shipSize && 
+                !positions.includes[true]) {
+                return true
+              } else {
+                return false
+              }
+            })
           if (coords.length > 0) {
             return [...acc, coords]
           } else {
