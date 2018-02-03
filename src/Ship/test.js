@@ -25,7 +25,7 @@ function testShip () {
 }
 
 /* ----------------------------------------------- */
-// TESTING FUNCTIONS
+// HELPER FUNCTIONS
 
 function testShipSize (size, shouldPass) {
   try {
