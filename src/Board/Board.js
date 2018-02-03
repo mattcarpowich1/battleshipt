@@ -25,8 +25,8 @@ class Board {
       throw new Error(`INVALID ARGUMENT "${orientation}"`)
     }
     return orientation === 'HORIZONTAL' 
-      ? findHorizontalCoords(this)(shipSize, orientation) 
-      : findVerticalCoords(this)(shipSize, orientation)
+      ? findHorizontalCoords(shipSize, orientation, this) 
+      : findVerticalCoords(shipSize, orientation, this)
   }
 
   placeShip(ship, x, y) {

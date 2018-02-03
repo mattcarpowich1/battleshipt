@@ -1,4 +1,5 @@
 import Board from './Board.js'
+import Ship from '../Ship'
 
 function testBoard () {
   // PRINT DIFFERENT SIZE BOARDS
@@ -17,10 +18,17 @@ function testBoard () {
     SMALL_BOARD_SIZE,
     VERTICAL
   )
+
+  // TEST HORIZONTAL SHIP PLACEMENT
+  testPlacement(
+    SMALL_SHIP_SIZE,
+    SMALL_BOARD_SIZE,
+    HORIZONTAL
+  )
 }
  
 /* ----------------------------------------------- */
-// TESTING FUNCTIONS
+// HELPER FUNCTIONS
 
 function testBoardSizes (boards) {
   boards.forEach(size => {
@@ -41,6 +49,13 @@ function testPositioning (shipSize, boardSize, o) {
   b.setCoordinates(0, 0, true)
   b.setCoordinates(1, 0, true)
   console.log(b.getAvailableCoordinates(shipSize, o))
+}
+
+function testPlacement (shipSize, boardSize, o) {
+  const b = new Board(boardSize)
+  const s = new Ship(shipSize)
+  s.setOrientation(o)
+  b.placeShip(s, 0, 0)
 }
 
 /* ----------------------------------------------- */

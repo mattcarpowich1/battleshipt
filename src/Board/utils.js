@@ -6,64 +6,37 @@ function initializeBoard (item, index, arr) {
 // RETURNS [X, Y] COORDINATES FOR
 // A HORIZONTALLY PLACED SHIP 
 // ON THE CURRENT GAME BOARD.
-function findHorizontalCoords (board) {
-  return (shipSize, orientation) => {
-    return (
-      board.coordinates
-        .reduce((acc, row, y) => {
-          let coords = row
-            .map((val, x) => [x, y])
-            .filter(c => {
-              let positions = row
-                .slice(c[0], c[0] + shipSize)
-              if (!row[c[0]] && 
-                c[0] <= board.boardSize - shipSize &&
-                !positions.includes(true)) {
-                return true
-              } else {
-                return false
-              }
-            })
-          if (coords.length > 0) {
-            return [...acc, coords]
-          } else {
-            return acc
-          }
-        }, [])
-    )
+function findHorizontalCoords (shipSize, orientation, board) {
+  const { boardSize, coordinates } = board
+  const results = []
+  for (let y = 0; y < boardSize; y++) {
+    for (let x = 0; x <= boardSize - shipSize; x++) {
+      let slot = coordinates[y].slice(x, x + shipSize)
+      if (!coordinates[y][x] && !slot.includes(true)) {
+        results.push([x, y])
+      }
+    }
   }
+  return results
 }
 
 // RETURNS [X, Y] COORDINATES FOR
 // A VERITCALLY PLACED SHIP 
 // ON THE CURRENT GAME BOARD.
-function findVerticalCoords (board) {
-  return (shipSize, orientation) => {
-    return (
-      board.coordinates
-        .reduce((acc, row, y, arr) => {
-          let coords = row
-            .map((val, x) => [x, y])
-            .filter(c => {
-              if (!row[c[0]] &&
-                c[1] <= board.boardSize - shipSize) {
-                let rows = arr.slice(y, y + shipSize)
-                for (let i = 0; i < shipSize; i++) {
-                  if (rows[i][c[0]] === true) {
-                    return false;
-                  } 
-                }
-                return true
-              } else return false
-            })
-          if (coords.length > 0) {
-            return [...acc, coords]
-          } else {
-            return acc
-          }
-        }, [])
-    )
+function findVerticalCoords (shipSize, orientation, board) {
+  const { boardSize, coordinates } = board
+  const results = []
+  for (let y = 0; y <= boardSize - shipSize; y++) {
+    for (let x = 0; x < boardSize; x++) {
+      let slot = coordinates
+        .slice(y, y + shipSize)
+        .map(row => row[x])
+      if (!coordinates[y][x] && !slot.includes(true)) {
+        results.push([x, y])
+      }
+    }
   }
+  return results 
 }
 
 export {
