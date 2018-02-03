@@ -45,19 +45,16 @@ function findVerticalCoords (board) {
           let coords = row
             .map((val, x) => [x, y])
             .filter(c => {
-              let rows = arr.slice(y, y + shipSize)
-              let positions = rows.map((val, iY) => {
-                return val.filter((v, iX) => {
-                  return (c[0] === iX && c[1] === iY)
-                })
-              })
-              if (!row[c[0]] && 
-                c[1] <= board.boardSize - shipSize && 
-                !positions.includes[true]) {
+              if (!row[c[0]] &&
+                c[1] <= board.boardSize - shipSize) {
+                let rows = arr.slice(y, y + shipSize)
+                for (let i = 0; i < shipSize; i++) {
+                  if (rows[i][c[0]] === true) {
+                    return false;
+                  } 
+                }
                 return true
-              } else {
-                return false
-              }
+              } else return false
             })
           if (coords.length > 0) {
             return [...acc, coords]

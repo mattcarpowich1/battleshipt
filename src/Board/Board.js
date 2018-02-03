@@ -29,6 +29,10 @@ class Board {
       : findVerticalCoords(this)(shipSize, orientation)
   }
 
+  setCoordinates(x, y, val) {
+    this.coordinates[y][x] = val
+  }
+
   printBoard () {
     console.log(this.coordinates)
   }
