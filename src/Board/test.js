@@ -48,9 +48,8 @@ function testPositioning (shipSize, boardSize, o) {
   TEST_COORDINATES.forEach(location => {
     b.setCoordinates(location[0], location[1], true)
   })
-  let status
   const coordinates = b.getAvailableCoordinates(shipSize, o)
-  status = coordinates.includes(OCCUPIED_LOCATIONS[o])
+  const status = coordinates.includes(OCCUPIED_LOCATIONS[o])
   ? 'FAILED' 
   : 'PASSED'
   console.log(`${status} ${o} POSITIONING`)
