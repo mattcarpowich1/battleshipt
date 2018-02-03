@@ -29,8 +29,8 @@ class Board {
       : findVerticalCoords(this)(shipSize, orientation)
   }
 
-  placeShip(shipSize, orientation, x, y) {
-
+  placeShip(ship, x, y) {
+    console.log(ship)
   }
 
   setCoordinates(x, y, val) {

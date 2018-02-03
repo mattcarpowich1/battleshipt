@@ -5,39 +5,42 @@ function testBoard () {
   testBoardSizes(BOARD_SIZES)
 
   // TEST HORIZONTAL POSITIONING 
-  console.log(
-    HR, 
-    `\nHORIZONTAL POSITIONS: SHIP_SIZE = ${SMALL_SHIP_SIZE},`,
-    `BOARD_SIZE = ${SMALL_BOARD_SIZE}`
+  testPositioning(
+    SMALL_SHIP_SIZE,
+    SMALL_BOARD_SIZE,
+    HORIZONTAL
   )
-  const b1 = new Board(SMALL_BOARD_SIZE)
-  b1.setCoordinates(3, 2, true)
-  b1.setCoordinates(0, 0, true)
-  b1.setCoordinates(1, 0, true)
-  console.log(b1.getAvailableCoordinates(SMALL_SHIP_SIZE, 'HORIZONTAL'))
 
   // TEST VERTICAL POSITIONING
-  console.log(
-    HR, 
-    `\nVERTICAL POSITIONS: SHIP_SIZE = ${SMALL_SHIP_SIZE},`,
-    `BOARD_SIZE = ${SMALL_BOARD_SIZE}`
+  testPositioning(
+    SMALL_SHIP_SIZE,
+    SMALL_BOARD_SIZE,
+    VERTICAL
   )
-  const b2 = new Board(SMALL_BOARD_SIZE)
-  b2.setCoordinates(0, 0, true)
-  b2.setCoordinates(4, 4, true)
-  b2.setCoordinates(2, 2, true)
-  console.log(b2.getAvailableCoordinates(SMALL_SHIP_SIZE, 'VERTICAL'))
 }
  
 /* ----------------------------------------------- */
 // TESTING FUNCTIONS
 
-function testBoardSizes (sizes) {
-  sizes.forEach(size => {
+function testBoardSizes (boards) {
+  boards.forEach(size => {
     let b = new Board(size)
     console.log(HR, `\nPRINTING BOARD SIZE ${size}`)
     b.printBoard()
   })
+}
+
+function testPositioning (shipSize, boardSize, o) {
+  console.log(
+    HR, 
+    `\n${o} POSITIONS: SHIP_SIZE = ${shipSize},`,
+    `BOARD_SIZE = ${boardSize}`
+  )
+  const b = new Board(boardSize)
+  b.setCoordinates(3, 2, true)
+  b.setCoordinates(0, 0, true)
+  b.setCoordinates(1, 0, true)
+  console.log(b.getAvailableCoordinates(shipSize, o))
 }
 
 /* ----------------------------------------------- */
@@ -56,6 +59,8 @@ const SMALL_SHIP_SIZE = 2
 const SHIP_SIZES = [
   SMALL_SHIP_SIZE
 ]
+const HORIZONTAL = 'HORIZONTAL'
+const VERTICAL = 'VERTICAL'
 
 /* ----------------------------------------------- */
 

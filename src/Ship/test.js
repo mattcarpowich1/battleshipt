@@ -3,25 +3,25 @@ import Ship from './Ship.js'
 function testShip () {
   // INVALID SHIP SIZES
   console.log(HR, '\nTESTING INVALID SHIP SIZES')
-  testShipSize(-1, false)
-  testShipSize(0, false)
-  testShipSize(8, false)
+  testShipSize(-1, FAIL)
+  testShipSize(0, FAIL)
+  testShipSize(8, FAIL)
 
   // VALID SHIP SIZES
   console.log(HR, '\nTESTING VALID SHIP SIZES')
-  testShipSize(1, true)
-  testShipSize(2, true)
+  testShipSize(1, PASS)
+  testShipSize(2, PASS)
 
   // INVALID SHIP ORIENTATIONS
   console.log(HR, '\nTESTING INVALID SHIP ORIENTATIONS')
-  testShipOrientation('horizontal', false)
-  testShipOrientation('', false)
-  testShipOrientation('VERTICA', false)
+  testShipOrientation('horizontal', FAIL)
+  testShipOrientation('', FAIL)
+  testShipOrientation('VERTICA', FAIL)
 
   // VALID SHIP ORIENTATIONS
   console.log(HR, '\nTESTING VALID SHIP ORIENTATIONS')
-  testShipOrientation('HORIZONTAL', true)
-  testShipOrientation('VERTICAL', true)
+  testShipOrientation(HORIZONTAL, PASS)
+  testShipOrientation(VERTICAL, PASS)
 }
 
 /* ----------------------------------------------- */
@@ -64,6 +64,10 @@ function testShipOrientation (o, shouldPass) {
 // CONSTANTS
 
 const HR = Array(50).fill('-').join('')
+const HORIZONTAL = 'HORIZONTAL'
+const VERTICAL = 'VERTICAL'
+const PASS = true
+const FAIL = false
 
 /* ----------------------------------------------- */
 
