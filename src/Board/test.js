@@ -45,10 +45,15 @@ function testPositioning (shipSize, boardSize, o) {
     `BOARD_SIZE = ${boardSize}`
   )
   const b = new Board(boardSize)
-  b.setCoordinates(3, 2, true)
-  b.setCoordinates(0, 0, true)
-  b.setCoordinates(1, 0, true)
-  console.log(b.getAvailableCoordinates(shipSize, o))
+  TEST_COORDINATES.forEach(location => {
+    b.setCoordinates(location[0], location[1], true)
+  })
+  let status
+  const coordinates = b.getAvailableCoordinates(shipSize, o)
+  status = coordinates.includes(OCCUPIED_LOCATIONS[o])
+  ? 'FAILED' 
+  : 'PASSED'
+  console.log(`${status} ${o} POSITIONING`)
 }
 
 function testPlacement (shipSize, boardSize, o) {
@@ -76,6 +81,15 @@ const SHIP_SIZES = [
 ]
 const HORIZONTAL = 'HORIZONTAL'
 const VERTICAL = 'VERTICAL'
+const TEST_COORDINATES = [
+  [3, 2],
+  [0, 0],
+  [1, 0]
+]
+const OCCUPIED_LOCATIONS = {
+  [HORIZONTAL] : [...TEST_COORDINATES, [2, 2]],
+  [VERTICAL] : [...TEST_COORDINATES, [3, 1]]
+}
 
 /* ----------------------------------------------- */
 
