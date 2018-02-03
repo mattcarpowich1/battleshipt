@@ -1,5 +1,5 @@
 // FILLS A ROW WITH FALSE VALUES.
-function fillBoard (item, index, arr) {
+function initializeBoard (item, index, arr) {
   return Array(arr.length).fill(false)
 }
 
@@ -67,7 +67,7 @@ function findVerticalCoords (board) {
 }
 
 export {
-  fillBoard,
+  initializeBoard,
   findHorizontalCoords,
   findVerticalCoords
 }

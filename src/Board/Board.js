@@ -1,5 +1,5 @@
 import {
-  fillBoard,
+  initializeBoard,
   findHorizontalCoords,
   findVerticalCoords
 } from './utils.js'
@@ -13,7 +13,7 @@ class Board {
     this.boardSize = size
     this.coordinates = Array(size)
       .fill([])
-      .map(fillBoard)
+      .map(initializeBoard)
   }
 
   getSize () {
@@ -27,6 +27,10 @@ class Board {
     return orientation === 'HORIZONTAL' 
       ? findHorizontalCoords(this)(shipSize, orientation) 
       : findVerticalCoords(this)(shipSize, orientation)
+  }
+
+  placeShip(shipSize, orientation, x, y) {
+
   }
 
   setCoordinates(x, y, val) {
